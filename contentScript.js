@@ -10,7 +10,6 @@ links.forEach(link => {
       link.style.backgroundColor = "yellow";
       link.style.color = "black";
       link.style.fontWeight = "bold";
-      
     }
   });
   
