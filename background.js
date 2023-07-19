@@ -19,13 +19,32 @@ chrome.action.onClicked.addListener((tab) => {
   });
   
   // Listen for incoming messages from the extension popup or content script
-  chrome.runtime.onMessage.addListener((message) => {
-
-    // Check if the message contains links
-    if (message.links) {
-
-      // Log the links to the console
-      console.log(message.links);
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.generateHTML) {
+      generateHtmlPage(message.links);
     }
   });
+  
+  function generateHtmlPage(links) {
+    var htmlContent = '<html><head><title>MaLink Detector Links</title></head><body>';
+    htmlContent += '<h1>MaLink Detector Links</h1>';
+    htmlContent += '<ul>';
+    links.forEach(function(link) {
+      htmlContent += '<li><a href="' + link + '">' + link + '</a></li>';
+    });
+    htmlContent += '</ul>';
+    htmlContent += '</body></html>';
+  
+    // Create a Blob with the HTML content
+    var blob = new Blob([htmlContent], { type: 'text/html' });
+  
+    // Create a URL from the Blob
+    var url = URL.createObjectURL(blob);
+  
+    // Open the URL in a new tab
+    chrome.tabs.create({ url: url });
+  
+    // Revoke the URL after opening the tab to release resources
+    URL.revokeObjectURL(url);
+  }
   
