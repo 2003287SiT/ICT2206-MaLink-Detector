@@ -36,5 +36,3 @@ if __name__ == "__main__":
     print("WHOIS Information:")
     print(whois_info)
     print("-" * 100)
-
-

@@ -33,4 +33,3 @@ if __name__ == "__main__":
 
     url = input("Enter the URL to check headers: ")
     headers_dict = get_url_headers(url)
-
