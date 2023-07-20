@@ -15,6 +15,7 @@ python_files = [file for file in os.listdir(current_directory) if file.endswith(
 main_file_name = os.path.basename(__file__)
 available_files = {file[:-3]: os.path.join(current_directory, file) for file in python_files if file != main_file_name}
 
+
 def run_selected_file(file_path):
     try:
         with open(file_path) as file:
@@ -24,6 +25,7 @@ def run_selected_file(file_path):
         print(f"'{file_path}' file does not exist.")
     except Exception as e:
         print(f"An error occurred while running '{file_path}': {e}")
+
 
 def create_gui():
     print("Select a Python file to run:")
@@ -46,4 +48,3 @@ def create_gui():
 
 if __name__ == "__main__":
     create_gui()
-
