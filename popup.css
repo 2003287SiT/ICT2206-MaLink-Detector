@@ -1,9 +1,13 @@
 body {
     width: 400px;
     height: 300px;
-  }
+}
   
-  button {
+button {
+    border: none;
     margin-top: 5px;
-  }
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
   
