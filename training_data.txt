@@ -1,0 +1,16 @@
+SELECT * FROM users WHERE username='admin' AND password='password'	0
+SELECT * FROM users WHERE username='' OR '1'='1'--' AND password=''	1
+SELECT * FROM products WHERE id=1; DROP TABLE products;	1
+SELECT * FROM users WHERE username='john'--' AND password='password'	1
+SELECT * FROM users WHERE username='admin' AND password='123' OR '1'='1'	1
+SELECT * FROM users WHERE username='admin' UNION SELECT credit_card_number, NULL FROM credit_cards;--' AND password='password'	1
+SELECT * FROM users WHERE username='admin' AND password='password' OR 1=1'	1
+SELECT * FROM users WHERE username='admin' AND password='password' UNION SELECT NULL, password FROM users;--'	1
+SELECT * FROM users WHERE username='admin' AND password='password' AND SLEEP(5)	1
+SELECT * FROM users WHERE username='admin' AND password='password' OR SLEEP(5)='1'	1
+SELECT * FROM users WHERE username='admin' AND password='password' UNION SELECT NULL, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES;--'	1
+SELECT * FROM users WHERE username='admin' AND password='password' UNION SELECT NULL, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='users';--'	1
+SELECT * FROM users WHERE username='admin' AND password='password' OR 1/0='1'	1
+SELECT * FROM users WHERE username='admin' AND password='' OR 'a'='a'; --'	1
+SELECT * FROM users WHERE username='admin' AND SUBSTRING(password, 1, 1)='a'	1
+SELECT * FROM users WHERE username='admin' AND password=PASSWORD('password')	1
