@@ -1,5 +1,5 @@
 # ICT2206 MaLink Detector
-2206 Project GitHub
+ 2206 Project Github
  
 # ICT2206-Web-Security-Assignment
 Repo for ICT2206 Assignment
@@ -13,4 +13,4 @@ Repo for ICT2206 Assignment
   - Video (5-10 min)
   - Set of slides for 12 min group presentation
 
-Assignment weight: 35%
+Assigment weight: 35%

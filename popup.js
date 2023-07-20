@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var detectLinksButton = document.getElementById('detectLinksBtn');
     var generateHTMLButton = document.getElementById('generateHTMLBtn'); // New button element
     var resultElement = document.getElementById('result');
-
-    var uniqueLinks = new Set(); // Use a Set to store unique links
-
+  
     // Add click event listener for Detect Links button function
     detectLinksButton.addEventListener('click', function() {
       // Query the active tab in the current window
@@ -20,11 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           // If there are links in the returned results
           if (results && results.length > 0) {
-                    var links = results[0];
-                    // Add links to the uniqueLinks Set to eliminate duplicates
-                    links.forEach(link => uniqueLinks.add(link));
-                    // Update the resultElement to display the unique links
-                    resultElement.innerText = Array.from(uniqueLinks).join('\n');
+            // Get the array of links from the results
+            var links = results[0];
+            // Set the innerText of the resultElement to display the links
+            resultElement.innerText = links.join('\n');
           }
         });
       });
