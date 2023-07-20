@@ -1,5 +1,6 @@
 import dns.resolver
 
+
 def get_dns_records(domain):
     dns_records = {}
     record_types = ['A', 'AAAA', 'ANY', 'CAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT']
