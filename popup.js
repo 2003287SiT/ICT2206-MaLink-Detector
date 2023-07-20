@@ -38,25 +38,70 @@ document.addEventListener('DOMContentLoaded', function() {
       generateHTML(links);
     });
   
-    // Function to generate the HTML page with the links
-    function generateHTML(links) {
-      var htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Links Found by MaLink Detector </title>
-        </head>
-        <body>
-          <h1>Links Found</h1>
-          <ul>
-            ${links.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
-          </ul>
-        </body>
-        </html>
-      `;
+// Function to generate the HTML page with the links
+function generateHTML(links) {
+    // Load the 'whitelist.txt' file and process the links
+    fetch(chrome.runtime.getURL('whitelist.txt'))
+      .then(response => response.text())
+      .then(whitelistText => {
+        const whitelist = whitelistText.split('\n').map(link => link.trim());
+        
+        // Load the 'blacklist.txt' file and process the links
+        fetch(chrome.runtime.getURL('blacklist.txt'))
+          .then(response => response.text())
+          .then(blacklistText => {
+            const blacklist = blacklistText.split('\n').map(link => link.trim());
+            const safeLinks = [];
+            const suspiciousLinks = [];
+            const unknownLinks = [];
+        
+            links.forEach(link => {
+              if (whitelist.includes(link)) {
+                safeLinks.push(link);
+              } else if (blacklist.includes(link)) {
+                suspiciousLinks.push(link);
+              } else {
+                unknownLinks.push(link);
+              }
+            });
+        
+            const htmlContent = `
+              <!DOCTYPE html>
+              <html>
+              <head>
+                <title>Links Found by MaLink Detector</title>
+              </head>
+              <body>
+                <h1>Safe Links</h1>
+                <ul>
+                  ${safeLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
   
-      // Open the generated HTML page in a new tab
-      chrome.tabs.create({ url: 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent) });
-    }
-  });
+                <h1>Suspicious Links</h1>
+                <ul>
+                  ${suspiciousLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
+  
+                <h1>Unknown Links</h1>
+                <ul>
+                  ${unknownLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
+              </body>
+              </html>
+            `;
+  
+            // Open the generated HTML page in a new tab
+            chrome.tabs.create({ url: 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent) });
+          })
+          .catch(error => {
+            console.error('Error loading the blacklist:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error loading the whitelist:', error);
+      });
+  }
+  
+  
+});
   
