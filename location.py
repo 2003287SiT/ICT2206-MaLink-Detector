@@ -40,16 +40,21 @@ if __name__ == "__main__":
     ip_address = resolve_domain_to_ip(domain)
 
     if ip_address:
-        country, region, city, latitude, longitude = get_ip_location(ip_address, api_token)
-        if country:
-            print("-" * 50)
-            print(f"Country: {country}")
-            print(f"Region: {region}")
-            print(f"City: {city}")
-            print(f"Latitude: {latitude}")
-            print(f"Longitude: {longitude}")
-            print("-" * 50)
-        else:
-            print("Unable to retrieve location for the given domain name.")
+        try:
+            country, region, city, latitude, longitude = get_ip_location(ip_address, api_token)
+            if country:
+                print("-" * 50)
+                print(f"Country: {country}")
+                print(f"Region: {region}")
+                print(f"City: {city}")
+                print(f"Latitude: {latitude}")
+                print(f"Longitude: {longitude}")
+                print("-" * 50)
+            else:
+                print("Unable to retrieve location for the given domain name.")
+        except IndexError:
+            print("Error: The API response is missing expected fields.")
+        except Exception as e:
+            print(f"Error: An unexpected error occurred: {e}")
     else:
         print("Unable to resolve domain to IP address.")
