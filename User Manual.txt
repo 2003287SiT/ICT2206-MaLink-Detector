@@ -1,0 +1,11 @@
+To use the extension (for developers):
+
+0. Download extension code from github
+
+1. Go to Chrome extensions
+
+2. Enter developer mode 
+
+3. In the selection "Load unpacked", select the folder containing the extension files.
+
+4. Extension should be ready.

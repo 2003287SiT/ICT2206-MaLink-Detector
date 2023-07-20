@@ -41,80 +41,70 @@ document.addEventListener('DOMContentLoaded', function() {
       generateHTML(links);
     });
   
-    // Function to generate the HTML page with the links
-    function generateHTML(links) {
-        var linksPerPage = 50; // Set the number of links to display per page
-        var numPages = Math.ceil(links.length / linksPerPage);
-
-        var htmlPages = [];
-        for (let pageNum = 0; pageNum < numPages; pageNum++) {
-            var startIdx = pageNum * linksPerPage;
-            var endIdx = startIdx + linksPerPage;
-            var pageLinks = links.slice(startIdx, endIdx);
-
-            var pageContent = `
-                <div class="page page-${pageNum}">
-                    <h1>Links Found - Page ${pageNum + 1}</h1>
-                    <ul>
-                        ${pageLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
-                    </ul>
-                </div>
-            `;
-
-            htmlPages.push(pageContent);
-        }
-
-        var fullHtmlContent = `
-            <!DOCTYPE html>
-            <html>
-            <head>
+// Function to generate the HTML page with the links
+function generateHTML(links) {
+    // Load the 'whitelist.txt' file and process the links
+    fetch(chrome.runtime.getURL('whitelist.txt'))
+      .then(response => response.text())
+      .then(whitelistText => {
+        const whitelist = whitelistText.split('\n').map(link => link.trim());
+        
+        // Load the 'blacklist.txt' file and process the links
+        fetch(chrome.runtime.getURL('blacklist.txt'))
+          .then(response => response.text())
+          .then(blacklistText => {
+            const blacklist = blacklistText.split('\n').map(link => link.trim());
+            const safeLinks = [];
+            const suspiciousLinks = [];
+            const unknownLinks = [];
+        
+            links.forEach(link => {
+              if (whitelist.includes(link)) {
+                safeLinks.push(link);
+              } else if (blacklist.includes(link)) {
+                suspiciousLinks.push(link);
+              } else {
+                unknownLinks.push(link);
+              }
+            });
+        
+            const htmlContent = `
+              <!DOCTYPE html>
+              <html>
+              <head>
                 <title>Links Found by MaLink Detector</title>
-            </head>
-            <body>
-                ${htmlPages.join('\n')}
-                <div id="pagination">
-                    <button id="prevBtn" disabled>Previous</button>
-                    <button id="nextBtn">Next</button>
-                </div>
-            </body>
-            <script>
-                var currentPage = 0;
-                var numPages = ${numPages};
-
-                function showPage(pageNum) {
-                    var pages = document.querySelectorAll('.page');
-                    for (let i = 0; i < pages.length; i++) {
-                        pages[i].style.display = i === pageNum ? 'block' : 'none';
-                    }
-
-                    var prevBtn = document.getElementById('prevBtn');
-                    var nextBtn = document.getElementById('nextBtn');
-
-                    prevBtn.disabled = pageNum === 0;
-                    nextBtn.disabled = pageNum === numPages - 1;
-                }
-
-                document.getElementById('prevBtn').addEventListener('click', function() {
-                    if (currentPage > 0) {
-                        currentPage--;
-                        showPage(currentPage);
-                    }
-                });
-
-                document.getElementById('nextBtn').addEventListener('click', function() {
-                    if (currentPage < numPages - 1) {
-                        currentPage++;
-                        showPage(currentPage);
-                    }
-                });
-
-                showPage(currentPage);
-            </script>
-            </html>
-        `;
-
-        // Open the generated HTML page in a new tab
-        chrome.tabs.create({ url: 'data:text/html;charset=utf-8,' + encodeURIComponent(fullHtmlContent) });
-    }
-  });
+              </head>
+              <body>
+                <h1>Safe Links</h1>
+                <ul>
+                  ${safeLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
+  
+                <h1>Suspicious Links</h1>
+                <ul>
+                  ${suspiciousLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
+  
+                <h1>Unknown Links</h1>
+                <ul>
+                  ${unknownLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
+                </ul>
+              </body>
+              </html>
+            `;
+  
+            // Open the generated HTML page in a new tab
+            chrome.tabs.create({ url: 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent) });
+          })
+          .catch(error => {
+            console.error('Error loading the blacklist:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error loading the whitelist:', error);
+      });
+  }
+  
+  
+});
   
