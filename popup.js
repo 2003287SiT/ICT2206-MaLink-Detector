@@ -66,29 +66,36 @@ function generateHTML(links) {
             });
         
             const htmlContent = `
-              <!DOCTYPE html>
-              <html>
-              <head>
-                <title>Links Found by MaLink Detector</title>
-              </head>
-              <body>
-                <h1>Safe Links</h1>
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Links Found by MaLink Detector</title>
+            </head>
+            <body>
+              <h1>Safe Links</h1>
+              ${safeLinks.length > 0 ? `
                 <ul>
                   ${safeLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
-                </ul>
-  
-                <h1>Suspicious Links</h1>
+                </ul>` : '<p>No safe links found.</p>'
+              }
+        
+              <h1>Suspicious Links</h1>
+              ${suspiciousLinks.length > 0 ? `
                 <ul>
                   ${suspiciousLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
-                </ul>
-  
-                <h1>Unknown Links</h1>
+                </ul>` : '<p>No suspicious links found.</p>'
+              }
+        
+              <h1>Unknown Links</h1>
+              ${unknownLinks.length > 0 ? `
                 <ul>
                   ${unknownLinks.map(link => `<li><a href="${link}">${link}</a></li>`).join('\n')}
-                </ul>
-              </body>
-              </html>
-            `;
+                </ul>` : '<p>No unknown links found.</p>'
+              }
+            </body>
+            </html>
+          `;
+        
   
             // Open the generated HTML page in a new tab
             chrome.tabs.create({ url: 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent) });
