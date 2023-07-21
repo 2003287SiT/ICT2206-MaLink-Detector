@@ -1,0 +1,26 @@
+  {
+    "manifest_version": 3,
+    "name": "MaLink Detector",
+    "version": "1.0",
+    "description": "A simple Chrome extension to detect links and generate an HTML report.",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "MG16.png",
+        "48": "MG48.png",
+        "128": "MG128.png"
+      }
+    },
+    "permissions": [
+      "activeTab"
+    ],
+    "icons": {
+        "16": "MG16.png",
+        "48": "MG48.png",
+        "128": "MG128.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    }
+  }
+  
