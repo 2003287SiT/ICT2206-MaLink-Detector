@@ -15,10 +15,10 @@ def get_supported_ssl_versions(hostname, port=443):
                 supported_versions.append(protocol_version)
 
     except ssl.SSLError as e:
-        print(f"SSL Error: {e}")
+        raise ssl.SSLError(f"SSL Error: {e}")
 
     except socket.gaierror as e:
-        print(f"Connection Error: {e}")
+        raise socket.gaierror(f"Connection Error: {e}")
 
     return supported_versions
 
@@ -42,36 +42,47 @@ def get_ssl_certificate(hostname, port=443):
         return cert
 
     except ssl.SSLError as e:
-        print(f"SSL Error: {e}")
+        raise ssl.SSLError(f"SSL Error: {e}")
 
     except socket.gaierror as e:
-        print(f"Connection Error: {e}")
+        raise socket.gaierror(f"Connection Error: {e}")
 
     return None
 
 
-def scan_website_ssl(hostname_to_scan):
-    if not hostname_to_scan:
-        print("Invalid URL.")
-        return None, None
-
-    print("-" * 100)
-    print(f"Connected to {socket.gethostbyname(hostname_to_scan)}")
-
-    supported_versions = get_supported_ssl_versions(hostname_to_scan)
+def print_ssl_info(supported_versions, cert_info):
     if supported_versions:
         print("SSL/TLS Protocols:")
         for version in supported_versions:
             print(f"Version: {version}")
 
-    cert_info = get_ssl_certificate(hostname_to_scan)
     if cert_info:
         print("SSL Certificate:")
         print(f"Signature Algorithm: {cert_info.get_signature_algorithm().decode()}")
         print(f"RSA Key Strength:    {cert_info.get_pubkey().bits()}")
-    print("-" * 100)
-
-    return supported_versions, cert_info
 
 
+def scan_website_ssl(domain):
+    try:
+        supported_versions = get_supported_ssl_versions(domain)
+        cert_info = get_ssl_certificate(domain)
 
+        print("SSL/TLS Protocols:")
+        for version in supported_versions:
+            print(f"Version: {version}")
+
+        if cert_info:
+            print("\nSSL Certificate:")
+            print(f"Signature Algorithm: {cert_info.get_signature_algorithm().decode()}")
+            print(f"RSA Key Strength:    {cert_info.get_pubkey().bits()}")
+
+        return supported_versions, cert_info
+
+    except (ssl.SSLError, socket.gaierror) as e:
+        print(f"Error: {e}")
+        return None, None
+
+
+if __name__ == "__main__":
+    domain = input("Enter the URL to scan (e.g., example.com): ")
+    scan_website_ssl(domain)

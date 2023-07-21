@@ -19,13 +19,21 @@ def get_whois_data(domain):
 
 
 def extract_whois_info(whois_raw_data):
-    lines = whois_raw_data.split("\n")
+    lines = whois_raw_data.splitlines()
     extracted_info = ""
+    started = False  # To track if we have encountered the start of WHOIS information
+
     for line in lines:
-        extracted_info += line + "\n"
-        if "Last update of whois database" in line:
-            break
+        line = line.lstrip()  # Remove leading spaces
+        if not started and "Domain Name:" in line:
+            started = True  # Start capturing WHOIS information from this line
+        if started:
+            extracted_info += line + "\n"
+            if "Last update of whois database" in line:
+                break
+
     return extracted_info.strip()
+
 
 
 

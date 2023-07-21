@@ -6,10 +6,8 @@ from header import get_url_headers, print_headers
 from safebrowsing import print_url_safety
 
 
-if __name__ == "__main__":
-    domain = input("Enter the URL to scan (e.g., example.com):  ")
-    headers_dict = get_url_headers(domain)
-    # print("Generating...")
+def print_all_info(domain):
+    print("Generating...")
     whois_raw_data = get_whois_data(domain)
     whois_info = extract_whois_info(whois_raw_data)
     print("-" * 100)
@@ -20,8 +18,7 @@ if __name__ == "__main__":
     print("-" * 100)
     print("DNSLOOKUP Information")
     print("-" * 100)
-    dns_records = get_dns_records(domain)
-    print(get_dns_records(domain))
+    get_dns_records(domain)
 
     print("-" * 100)
     print("SSL Information:")
@@ -33,7 +30,6 @@ if __name__ == "__main__":
     print("Header Information:")
     print("-" * 100)
     headers = get_url_headers(domain)
-
     # Print the headers using the print_headers function
     print_headers(headers)
     print("-" * 100)
@@ -48,5 +44,3 @@ if __name__ == "__main__":
     print("Safe Browsing:")
     print("-" * 100)
     print_url_safety(domain)
-
-

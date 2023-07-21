@@ -8,15 +8,17 @@ def check_url_safety(url):
     results = s.lookup_urls([url])
 
     for domain, info in results.items():
-        print("Domain:", domain)
         if info['malicious']:
-            print("Malicious: Yes")
-            print("Platforms:", ", ".join(info['platforms']))
-            print("Threats:", ", ".join(info['threats']))
+            return f"Malicious: Yes\nPlatforms: {', '.join(info['platforms'])}\nThreats: {', '.join(info['threats'])}"
         else:
-            print("Malicious: No")
+            return "Malicious: No"
 
 
-if __name__ == '__main__':
-    url_to_check = input("Enter the URL you want to check: ")
-    check_url_safety(url_to_check)
+def print_url_safety(url):
+    safety_info = check_url_safety(url)
+    print(safety_info)
+
+
+if __name__ == "__main__":
+    domain = input("Enter the URL to check safety: ")
+    print_url_safety(domain)

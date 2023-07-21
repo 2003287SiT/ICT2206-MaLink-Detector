@@ -1,25 +1,28 @@
 import dns.resolver
 
+
 def get_dns_records(domain):
     dns_records = {}
     record_types = ['A', 'AAAA', 'ANY', 'CAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT']
 
-    print("*" * 50)
-
+    result = ""
     for record_type in record_types:
         try:
             records = dns.resolver.resolve(domain, record_type)
             dns_records[record_type] = []
             for record in records:
-                print(f"{record_type} Record:", record.to_text())
                 dns_records[record_type].append(record.to_text())
+
+            if dns_records[record_type]:
+                result += f"{record_type}:\n"
+                for record in dns_records[record_type]:
+                    result += f"{record}\n"
+                result += "\n"  # Add an extra newline after each record type
+            else:
+                result += f"{record_type}:\nNo {record_type} record found.\n\n"
         except dns.resolver.NoAnswer:
-            print(f"No {record_type} record found.")
+            result += f"{record_type}:\nNo {record_type} record found.\n\n"
         except dns.exception.DNSException as e:
-            print(f"Error while querying {record_type} records: {e}")
+            result += f"Error while querying {record_type} records: {e}\n\n"
 
-        print("*" * 50)
-
-    return dns_records
-
-
+    return result.strip()

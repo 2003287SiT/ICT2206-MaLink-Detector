@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Report for {{ domain }}</title>
+</head>
+<body>
+    <h1>Scan Report for {{ domain }}</h1>
+
+    <h2>WHOIS Information:</h2>
+    <pre>{{ whois_info }}</pre>
+
+    <h2>DNSLOOKUP Information:</h2>
+    <pre>{{ dns_records }}</pre>
+
+    <h2>SSL Information:</h2>
+    <pre>{{ ssl_info }}</pre>
+
+    <h2>Header Information:</h2>
+    <pre>{{ headers_info }}</pre>
+
+    <h2>Location Information:</h2>
+    <p>Country: {{ country }}</p>
+    <p>Region: {{ region }}</p>
+    <p>City: {{ city }}</p>
+    <p>Latitude: {{ latitude }}</p>
+    <p>Longitude: {{ longitude }}</p>
+
+    <h2>Safe Browsing:</h2>
+    <pre>{{ safe_browsing }}</pre>
+</body>
+</html>

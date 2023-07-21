@@ -1,5 +1,4 @@
 import requests
-import colorama
 
 
 def get_url_headers(url):
@@ -9,22 +8,17 @@ def get_url_headers(url):
         response = requests.head(url)
         headers = response.headers
 
-        headers_dict = {}
-
-        for header, value in headers.items():
-            # Format the Content-Security-Policy header to display each directive on a new line
-            if header == "Content-Security-Policy":
-                value = ', \n'.join(value.split())
-
-            headers_dict[header] = value
-            print(f"{header}: {value}")
-
-        return headers_dict
+        header_info_list = [f"{header}: {value.split(':')[0]}" for header, value in headers.items()]
+        return header_info_list  # Return a list of header names
 
     except requests.exceptions.RequestException as e:
         print(f"Error while making the request: {e}")
         return None
 
 
-
-
+def print_headers(header_info_list):
+    if header_info_list is not None:
+        for header_info in header_info_list:
+            print(header_info)
+    else:
+        print("No headers were retrieved.")

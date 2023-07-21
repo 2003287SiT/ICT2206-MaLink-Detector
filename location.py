@@ -35,13 +35,13 @@ def resolve_domain_to_ip(domain):
 
 def print_location_info(country, region, city, latitude, longitude):
     if country:
-        print("-" * 100)
+
         print(f"Country: {country}")
         print(f"Region: {region}")
         print(f"City: {city}")
         print(f"Latitude: {latitude}")
         print(f"Longitude: {longitude}")
-        print("-" * 100)
+
     else:
         print("Unable to retrieve location for the given domain name.")
 
@@ -58,3 +58,6 @@ def get_domain_location(domain):
     else:
         print("Unable to resolve domain to IP address.")
     return None, None, None, None, None
+
+
+
