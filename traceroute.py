@@ -16,7 +16,12 @@ def resolve(ip_addr):
 
 def traceroute(target, max_hops=30):
     # Process the target to handle different URL formats
-    target = target.replace("http://", "").replace("www.", "")
+    if target.startswith(("https://www", "http://www")):
+        target = target.lstrip("https://").lstrip("http://").lstrip("www")
+    elif target.startswith(("https://", "http://")):
+        target = target.lstrip("https://").lstrip("http://")
+    elif target.startswith("www"):
+        target = target.lstrip("www")
 
     print(f"Traceroute to {Fore.YELLOW}{target}{Fore.RESET} ({socket.gethostbyname(target)})")
     print("-" * 50)
@@ -53,4 +58,3 @@ if __name__ == "__main__":
     traceroute_result = traceroute(target)
 
     # You can use traceroute_result for further analysis or display purposes if needed.
-
