@@ -2,3 +2,5 @@ colorama==0.4.6
 requests==2.31.0
 dnspython~=2.3.0
 pyOpenSSL==23.2.0
+prettytable~=3.8.0
+scapy~=2.5.0
