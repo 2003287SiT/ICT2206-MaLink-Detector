@@ -1,9 +1,5 @@
 import os
-import requests
-import socket
-import dns.resolver
-import ssl
-from OpenSSL import SSL
+import PySimpleGUI as sg
 
 # Get the path to the directory where the main Python file resides
 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -28,22 +24,27 @@ def run_selected_file(file_path):
 
 
 def create_gui():
-    print("Select a Python file to run:")
-    for i, (file_name, _) in enumerate(available_files.items(), 1):
-        print(f"{i}. {file_name.capitalize()}")
+    layout = [
+        [sg.Text("Select a Python file to run:")],
+        [sg.DropDown(list(available_files.keys()), key="file_choice", default_value=next(iter(available_files.keys())))],
+        [sg.Button("Run", key="run"), sg.Button("Exit", key="exit")]
+    ]
+
+    window = sg.Window("Select Python File", layout, finalize=True)
 
     while True:
-        choice = input("\nEnter the number of the Python file to run: ")
-        if not choice.isdigit():
-            print("Invalid input. Please enter a valid number.")
-        else:
-            choice = int(choice) - 1
-            if 0 <= choice < len(available_files):
-                selected_file = list(available_files.values())[choice]
-                run_selected_file(selected_file)
-                break
-            else:
-                print("Invalid choice. Please enter a valid number.")
+        event, values = window.read()
+
+        if event == sg.WINDOW_CLOSED or event == "exit":
+            break
+        elif event == "run":
+            selected_file = available_files.get(values["file_choice"])
+
+            if selected_file:
+                output = run_selected_file(selected_file)
+                sg.popup_scrolled("Output:", output, title="Result")
+
+    window.close()
 
 
 if __name__ == "__main__":
