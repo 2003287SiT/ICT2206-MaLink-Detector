@@ -29,7 +29,7 @@ def display_menu():
     print("4. Header Information")
     print("5. Location Information")
     print("6. Safe Browsing")
-    print("7. Trace Route")
+    # print("7. Trace Route")
     print("8. Print All")
     print("9. Generate Report")
     print("10. Change URL")
@@ -122,8 +122,8 @@ if __name__ == "__main__":
                 check_url_safety(domain)
                 print("=" * 100)
 
-            elif choice == "7":
-                traceroute(domain)
+            # elif choice == "7":
+            #     traceroute(domain)
 
             elif choice == "8":
                 print_all_info(domain)
