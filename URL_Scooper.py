@@ -2,8 +2,8 @@ from whois import get_whois_data, extract_whois_info
 from nslookup import get_dns_records
 from sslinfo import scan_website_ssl
 from location import get_domain_location, print_location_info
-from header import get_url_headers
-from safebrowsing import check_url_safety
+from header import get_url_headers, print_headers
+from safebrowsing import check_url_safety, print_url_safety
 from printall import print_all_info
 from htmlreport import generate_html
 from traceroute import traceroute
@@ -106,7 +106,9 @@ if __name__ == "__main__":
             elif choice == "4":
                 print("Header Information:")
                 print("=" * 100)
-                headers_dict = get_url_headers(domain)
+                headers = get_url_headers(domain)
+                # Print the headers using the print_headers function
+                print_headers(headers)
                 print("=" * 100)
 
             elif choice == "5":
@@ -120,6 +122,7 @@ if __name__ == "__main__":
                 print("Safe Browsing: ")
                 print("=" * 100)
                 check_url_safety(domain)
+                print_url_safety(domain)
                 print("=" * 100)
 
             # elif choice == "7":
