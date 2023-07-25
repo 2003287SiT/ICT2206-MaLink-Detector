@@ -7,11 +7,12 @@ from safebrowsing import check_url_safety
 from sslinfo import scan_website_ssl
 import os
 
-if __name__ == "__main__":
+
+def generate_html(inserted_domain):
     script_directory = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_directory)  # Set the working directory to the script's
 
-    domain = input("Enter the URL to scan (e.g., example.com):  ")
+    domain = inserted_domain
 
     print("Generating...")
     whois_raw_data = get_whois_data(domain)
