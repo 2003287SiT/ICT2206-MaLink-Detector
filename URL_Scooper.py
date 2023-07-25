@@ -33,7 +33,7 @@ def display_menu():
     print("8. Print All")
     print("9. Generate Report")
     print("10. Change URL")
-    print("0. Exit")
+    print("11. Exit")
 
 
 def is_valid_domain(domain):
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
         while True:
             display_menu()
-            choice = input("Enter your choice (1-9): ")
+            choice = input("Enter your choice (1-11): ").strip()
             print("=" * 100)
 
             if choice == "1":
@@ -137,7 +137,7 @@ if __name__ == "__main__":
                 print("Changing URL...")
                 break
 
-            elif choice == "0":
+            elif choice == "11":
                 print("Exiting...")
                 exit()
 
