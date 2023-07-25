@@ -6,9 +6,7 @@ from header import get_url_headers, print_headers
 from safebrowsing import check_url_safety, print_url_safety
 from printall import print_all_info
 from htmlreport import generate_html
-from traceroute import traceroute
-import re
-import socket
+from domainvalidation import is_valid_domain, domain_exists
 
 art = """
 ██╗   ██╗██████╗ ██╗         ███████╗ ██████╗ ██████╗  ██████╗ ██████╗ ███████╗██████╗ 
@@ -29,24 +27,10 @@ def display_menu():
     print("4. Header Information")
     print("5. Location Information")
     print("6. Safe Browsing")
-    # print("7. Trace Route")
-    print("8. Print All")
-    print("9. Generate Report")
-    print("10. Change URL")
+    print("7. Print All")
+    print("8. Generate Report")
+    print("9. Change URL")
     print("0. Exit")
-
-
-def is_valid_domain(domain):
-    pattern = r'^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?(?:\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?)*$'
-    return re.match(pattern, domain) is not None
-
-
-def domain_exists(domain):
-    try:
-        socket.gethostbyname(domain)
-        return True
-    except socket.gaierror:
-        return False
 
 
 if __name__ == "__main__":
@@ -106,9 +90,8 @@ if __name__ == "__main__":
             elif choice == "4":
                 print("Header Information:")
                 print("=" * 100)
-                headers = get_url_headers(domain)
-                # Print the headers using the print_headers function
-                print_headers(headers)
+                headers_dict = get_url_headers(domain)
+                print_headers(headers_dict)
                 print("=" * 100)
 
             elif choice == "5":
@@ -125,18 +108,15 @@ if __name__ == "__main__":
                 print_url_safety(domain)
                 print("=" * 100)
 
-            # elif choice == "7":
-            #     traceroute(domain)
-
-            elif choice == "8":
+            elif choice == "7":
                 print_all_info(domain)
 
-            elif choice == "9":
+            elif choice == "8":
                 print("Generating HTML Report...")
                 generate_html(domain)
                 break
 
-            elif choice == "10":
+            elif choice == "9":
                 print("Changing URL...")
                 break
 
