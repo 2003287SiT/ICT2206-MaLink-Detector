@@ -48,5 +48,3 @@ if __name__ == "__main__":
     print("Safe Browsing:")
     print("-" * 100)
     print_url_safety(domain)
-
-
