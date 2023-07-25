@@ -51,10 +51,3 @@ def traceroute(target, max_hops=30):
             break
 
     return tracer_list
-
-
-if __name__ == "__main__":
-    target = input("Enter the target URL or IP address: ")
-    traceroute_result = traceroute(target)
-
-    # You can use traceroute_result for further analysis or display purposes if needed.
