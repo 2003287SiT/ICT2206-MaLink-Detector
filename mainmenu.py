@@ -26,8 +26,9 @@ def display_menu():
     print("5. Location Information")
     print("6. Safe Browsing")
     print("7. Print All")
-    print("8. Change URL")
-    print("9. Exit")
+    print("8. Generate Report")
+    print("9. Change URL")
+    print("0. Exit")
 
 
 if __name__ == "__main__":
@@ -97,10 +98,13 @@ if __name__ == "__main__":
                 print_all_info(domain)
 
             elif choice == "8":
-                print("Changing URL...")
                 break
 
             elif choice == "9":
+                print("Changing URL...")
+                break
+
+            elif choice == "0":
                 print("Exiting...")
                 exit()
 

@@ -35,7 +35,3 @@ def extract_whois_info(whois_raw_data):
     return extracted_info.strip()
 
 
-
-
-
-
