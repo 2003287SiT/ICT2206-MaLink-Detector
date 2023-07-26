@@ -2,7 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 from whois import get_whois_data, extract_whois_info
 from nslookup import get_dns_records
 from location import get_domain_location
-from header import get_url_headers, print_headers
+from header import get_url_headers
 from safebrowsing import check_url_safety
 from sslinfo import scan_website_ssl
 import os
