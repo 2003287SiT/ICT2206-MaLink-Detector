@@ -2,17 +2,16 @@ from jinja2 import Environment, FileSystemLoader
 from whois import get_whois_data, extract_whois_info
 from nslookup import get_dns_records
 from location import get_domain_location
-from header import get_url_headers, print_headers
+from header import get_url_headers
 from safebrowsing import check_url_safety
 from sslinfo import scan_website_ssl
 import os
 
-
-def generate_html(inserted_domain):
+if __name__ == "__main__":
     script_directory = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_directory)  # Set the working directory to the script's
 
-    domain = inserted_domain
+    domain = input("Enter the URL to scan (e.g., example.com):  ")
 
     print("Generating...")
     whois_raw_data = get_whois_data(domain)

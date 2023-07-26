@@ -32,8 +32,6 @@ def extract_whois_info(whois_raw_data):
             if "Last update of whois database" in line:
                 break
 
-    # If no WHOIS information is found, append the default message
-    if not extracted_info.strip():
-        extracted_info += "No WHOIS information found for the specified domain.\n"
-
     return extracted_info.strip()
+
+

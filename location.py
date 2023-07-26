@@ -58,3 +58,6 @@ def get_domain_location(domain):
     else:
         print("Unable to resolve domain to IP address.")
     return None, None, None, None, None
+
+
+
