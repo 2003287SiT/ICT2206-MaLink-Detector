@@ -5,7 +5,7 @@ from location import get_domain_location, print_location_info
 from header import get_url_headers, print_headers
 from safebrowsing import check_url_safety, print_url_safety
 from htmlreport import generate_html
-from domainvalidation import is_multi_line_input
+from domainvalidation import is_multi_line_input, is_valid_domain, domain_exists
 from cliformat import optionheader, optionfooter, subheader
 
 art = """
@@ -83,8 +83,8 @@ artx = """
 ░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀▀░░░▀░░▀▀▀░▀
       """
 
-def display_menu():
 
+def display_menu():
     print("\n")
     print(art)
     print("Now scooping: " + domain)
@@ -112,6 +112,14 @@ if __name__ == "__main__":
 
         if is_multi_line_input(domain):
             print("Error: URL cannot be more than one line of input. Please try again.")
+            continue
+
+        if not is_valid_domain(domain):
+            print("Error: Invalid domain format. Please enter a valid URL.")
+            continue
+
+        if not domain_exists(domain):
+            print("Error: Domain does not exist or cannot be resolved. Please enter a valid URL.")
             continue
 
         # Remove any leading/trailing spaces from the input

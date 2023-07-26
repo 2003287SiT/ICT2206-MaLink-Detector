@@ -31,9 +31,9 @@ df = pd.DataFrame(data_list, columns=header_list)
 # # Write the DataFrame to the CSV file
 # df.to_csv(csv_file_path, index=False)
 
-#Drop Data
+# Drop Data
 # Drop the specified columns from the DataFrame
-columns_to_drop = ['URL_of_Anchor', 'Links_in_tags','SFH', 'Abnormal_URL', 'on_mouseover',
+columns_to_drop = ['URL_of_Anchor', 'Links_in_tags', 'SFH', 'Abnormal_URL', 'on_mouseover',
                    "age_of_domain", "DNSRecord", "web_traffic", "Page_Rank",
                    "Google_Index", "Links_pointing_to_page", "Statistical_report"]
 data = df.drop(columns_to_drop, axis=1)
@@ -43,4 +43,3 @@ csv_file_path = "Training.csv"
 
 # # Write the DataFrame to the CSV file
 # data.to_csv(csv_file_path, index=False)
-
