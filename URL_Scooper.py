@@ -119,7 +119,8 @@ if __name__ == "__main__":
 
         while True:
             display_menu()
-            choice = input("Enter your choice (1-9): ")
+
+            choice = input("Enter your choice (1-9): ").strip()
             print("\n")
 
             if choice == "1":
@@ -137,8 +138,6 @@ if __name__ == "__main__":
                 print("\n")
                 input("Press enter to continue: ")
 
-
-
             elif choice == "2":
                 print("=" * 100)
                 print(art2)
@@ -152,7 +151,6 @@ if __name__ == "__main__":
                 print("\n")
                 input("Press enter to continue: ")
 
-
             elif choice == "3":
                 print("=" * 100)
                 print(art3)
@@ -164,7 +162,6 @@ if __name__ == "__main__":
                 print("=" * 100)
                 print("\n")
                 input("Press enter to continue: ")
-
 
             elif choice == "4":
                 print("=" * 100)
@@ -178,7 +175,6 @@ if __name__ == "__main__":
                 print("\n")
                 input("Press enter to continue: ")
 
-
             elif choice == "5":
                 print("=" * 100)
                 print(art5)
@@ -191,7 +187,6 @@ if __name__ == "__main__":
                 print("\n")
                 input("Press enter to continue: ")
 
-
             elif choice == "6":
                 print("=" * 100)
                 print(art6)
@@ -203,7 +198,6 @@ if __name__ == "__main__":
                 print("=" * 100)
                 print("\n")
                 input("Press enter to continue: ")
-
 
             elif choice == "7":
                 print("=" * 100)
@@ -253,8 +247,6 @@ if __name__ == "__main__":
                 print("\n")
                 input("Press enter to continue: ")
 
-
-
             elif choice == "8":
                 print("-" * 100)
                 print(art8)
@@ -264,8 +256,6 @@ if __name__ == "__main__":
                 print("=" * 100)
                 print("\n")
                 input("Press enter to continue: ")
-
-
 
             elif choice == "9":
                 print("-" * 100)
