@@ -2,16 +2,19 @@ from jinja2 import Environment, FileSystemLoader
 from whois import get_whois_data, extract_whois_info
 from nslookup import get_dns_records
 from location import get_domain_location
-from header import get_url_headers
+from header import get_url_headers, print_headers
 from safebrowsing import check_url_safety
 from sslinfo import scan_website_ssl
+from FinalML import machine
+
 import os
 
-if __name__ == "__main__":
+
+def generate_html(inserted_domain):
     script_directory = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_directory)  # Set the working directory to the script's
 
-    domain = input("Enter the URL to scan (e.g., example.com):  ")
+    domain = inserted_domain
 
     print("Generating...")
     whois_raw_data = get_whois_data(domain)
@@ -26,7 +29,7 @@ if __name__ == "__main__":
     sys.stdout = old_stdout
     ssl_info = new_stdout.getvalue()
     # Format the SSL information
-    formatted_ssl_info = "\n".join(ssl_info.split())
+    #formatted_ssl_info = "\n".join(ssl_info.split())
 
     headers_info = get_url_headers(domain)
     formatted_headers_info = "\n".join(header + ":" for header in headers_info) if headers_info is not None else ""
@@ -36,6 +39,8 @@ if __name__ == "__main__":
     safe_browsing = check_url_safety(domain)
 
     dns_records = get_dns_records(domain)
+
+    ml_data = machine(domain)
 
     # Load the HTML template
     env = Environment(loader=FileSystemLoader('.'))
@@ -53,7 +58,8 @@ if __name__ == "__main__":
         latitude=latitude,
         longitude=longitude,
         safe_browsing=safe_browsing,
-        dns_records=dns_records
+        dns_records=dns_records,
+        ml_data=ml_data
     )
 
     # Save the report to a file
