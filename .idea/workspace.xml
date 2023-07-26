@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5cf07fc-95e3-42ba-9369-90098cd4896f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cliformat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/URL_Scooper.py" beforeDir="false" afterPath="$PROJECT_DIR$/URL_Scooper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/URL_Scooper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Site_Scooper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +36,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "MY-branch",
+    "git-widget-placeholder": "Site-Scooper__base",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.URL_Scooper">
-    <configuration name="URL_Scooper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Site_Scooper">
+    <configuration name="Site_Scooper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ICT2206-MaLink-Detector" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -54,7 +53,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/URL_Scooper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Site_Scooper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -107,7 +106,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.URL_Scooper" />
+        <item itemvalue="Python.Site_Scooper" />
         <item itemvalue="Python.menu" />
       </list>
     </recent_temporary>
