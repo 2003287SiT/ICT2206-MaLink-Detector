@@ -7,6 +7,7 @@ from safebrowsing import check_url_safety, print_url_safety
 from htmlreport import generate_html
 from domainvalidation import is_multi_line_input
 from cliformat import optionheader, optionfooter, subheader
+from FinalML import machine
 
 art = """
 ██╗   ██╗██████╗ ██╗         ███████╗ ██████╗ ██████╗  ██████╗ ██████╗ ███████╗██████╗ 
@@ -172,7 +173,7 @@ if __name__ == "__main__":
 
             elif choice == "7":
                 optionheader(art7)
-
+                machine(domain)
                 optionfooter()
 
             elif choice == "8":

@@ -14,7 +14,6 @@ import ssl
 from datetime import datetime
 import requests
 from urllib.parse import urlparse, urljoin
-from bs4 import BeautifulSoup
 
 
 def machine():

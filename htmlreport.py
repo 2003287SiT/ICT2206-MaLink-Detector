@@ -2,9 +2,11 @@ from jinja2 import Environment, FileSystemLoader
 from whois import get_whois_data, extract_whois_info
 from nslookup import get_dns_records
 from location import get_domain_location
-from header import get_url_headers, print_headers
+from header import get_url_headers
 from safebrowsing import check_url_safety
 from sslinfo import scan_website_ssl
+from FinalML import machine
+
 import os
 
 
@@ -27,7 +29,7 @@ def generate_html(inserted_domain):
     sys.stdout = old_stdout
     ssl_info = new_stdout.getvalue()
     # Format the SSL information
-    formatted_ssl_info = "\n".join(ssl_info.split())
+    #formatted_ssl_info = "\n".join(ssl_info.split())
 
     headers_info = get_url_headers(domain)
     formatted_headers_info = "\n".join(header + ":" for header in headers_info) if headers_info is not None else ""
@@ -37,6 +39,8 @@ def generate_html(inserted_domain):
     safe_browsing = check_url_safety(domain)
 
     dns_records = get_dns_records(domain)
+
+    ml_data = machine(domain)
 
     # Load the HTML template
     env = Environment(loader=FileSystemLoader('.'))
@@ -54,7 +58,8 @@ def generate_html(inserted_domain):
         latitude=latitude,
         longitude=longitude,
         safe_browsing=safe_browsing,
-        dns_records=dns_records
+        dns_records=dns_records,
+        ml_data=ml_data
     )
 
     # Save the report to a file
