@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5cf07fc-95e3-42ba-9369-90098cd4896f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/URL_Scooper.py" beforeDir="false" afterPath="$PROJECT_DIR$/URL_Scooper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domainvalidation.py" beforeDir="false" afterPath="$PROJECT_DIR$/domainvalidation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/printall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scan_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/scan_report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whois.py" beforeDir="false" afterPath="$PROJECT_DIR$/whois.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinalML.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinalML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
