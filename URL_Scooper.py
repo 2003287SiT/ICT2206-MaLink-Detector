@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
         while True:
             display_menu()
-            choice = input("Enter your choice (1-9): ")
+            choice = input("Enter your choice (1-9): ").strip()
             print("=" * 100)
 
             if choice == "1":
