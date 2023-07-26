@@ -1,0 +1,46 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
+
+/* Heading styles */
+h1 {
+    color: #333;
+    border-bottom: 2px solid #333;
+}
+
+h2 {
+    color: #555;
+    margin-top: 30px;
+}
+
+/* Preformatted text styles */
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* Paragraph styles */
+p {
+    margin: 5px 0;
+}
+
+/* Safe Browsing section styles */
+h2:last-of-type {
+    margin-bottom: 40px;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
