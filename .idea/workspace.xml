@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5cf07fc-95e3-42ba-9369-90098cd4896f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/htmlreport.py" beforeDir="false" afterPath="$PROJECT_DIR$/htmlreport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainmenu.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/URL_Scooper.py" beforeDir="false" afterPath="$PROJECT_DIR$/URL_Scooper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domainvalidation.py" beforeDir="false" afterPath="$PROJECT_DIR$/domainvalidation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/printall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scan_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/scan_report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whois.py" beforeDir="false" afterPath="$PROJECT_DIR$/whois.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +30,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;MY-branch&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "MY-branch",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.URL_Scooper">
     <configuration name="URL_Scooper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ICT2206-MaLink-Detector" />
