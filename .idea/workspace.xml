@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c1359ce3-6c25-4d42-9d75-de9bde5a9ef5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MG128.png" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/MG128.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MG16.png" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/MG16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MG48.png" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/MG48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contentScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/contentScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/magnifying glass icon.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/magnifying glass icon.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Extension/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinalML.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scooper_ML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Site_Scooper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Site_Scooper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +25,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/jonkengoh/Documents/GitHub/ICT2206-MaLink-Detector/Extension"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Extension" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Extension" />
     </key>

@@ -4,6 +4,7 @@ from sslinfo import scan_website_ssl
 from location import get_domain_location, print_location_info
 from header import get_url_headers, print_headers
 from safebrowsing import check_url_safety, print_url_safety
+from Scooper_ML import mlScan
 from htmlreport import generate_html
 from domainvalidation import is_multi_line_input
 from cliformat import optionheader, optionfooter, subheader
@@ -179,7 +180,7 @@ if __name__ == "__main__":
 
             elif choice == "7":
                 optionheader(art7)
-
+                mlScan(site)
                 optionfooter()
 
             elif choice == "8":

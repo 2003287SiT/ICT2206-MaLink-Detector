@@ -17,7 +17,7 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 
-def machine():
+def mlScan(site):
     # Reading in csv file
     df = pd.read_csv('Training.csv')
 
@@ -101,8 +101,8 @@ def machine():
     sus_links = []
     legit_links = []
 
-    # url = www.angel-magic.com
-    url = input("Enter the URL you want to analyze: ")
+    # url = www.angel-magic.com (This is the url to scan)
+    url = site
 
     # Add default scheme (https://) if missing
     def add_default_scheme(url):
@@ -849,11 +849,11 @@ def machine():
     for link in sus_links:
         print(link)
 
-
     prediction = clf.predict(urlData)
     if prediction[0] == 1:
         print(f"\nThe website {url} is " + "Safe.\n")
     else:
         print(f"\nThe website {url} is " + "Suspicious.\n")
 
-machine()
+
+
