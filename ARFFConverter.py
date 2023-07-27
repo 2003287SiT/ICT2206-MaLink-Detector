@@ -1,11 +1,5 @@
 import pandas as pd
 
-'''
-Run this if you do not have the csv.
-This file help to convert arff file
-into csv for ML.py to run.
-'''
-
 arff_file_path = "Training Dataset.arff"
 
 # Read the content of the ARFF file
@@ -30,8 +24,23 @@ data_list = [line.split(',') for line in data_lines if line.strip()]
 # Create a Pandas DataFrame from the header and data lists
 df = pd.DataFrame(data_list, columns=header_list)
 
-# Specify the path to save the CSV file
-csv_file_path = "csv_file.csv"
+# # Full Data
+# # Specify the path to save the CSV file
+# csv_file_path = "Training_Full.csv"
+#
+# # Write the DataFrame to the CSV file
+# df.to_csv(csv_file_path, index=False)
 
-# Write the DataFrame to the CSV file
-df.to_csv(csv_file_path, index=False)
+#Drop Data
+# Drop the specified columns from the DataFrame
+columns_to_drop = ['URL_of_Anchor', 'Links_in_tags','SFH', 'Abnormal_URL', 'on_mouseover',
+                   "age_of_domain", "DNSRecord", "web_traffic", "Page_Rank",
+                   "Google_Index", "Links_pointing_to_page", "Statistical_report"]
+data = df.drop(columns_to_drop, axis=1)
+
+# Specify the path to save the CSV file
+csv_file_path = "Training.csv"
+
+# # Write the DataFrame to the CSV file
+# data.to_csv(csv_file_path, index=False)
+
