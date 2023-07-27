@@ -23,7 +23,7 @@ def machine():
 
     data = df.drop(['Result'], axis=1)
     # check if the preprocessed data without the columns below is about 92-93% accuracy
-    # which is about 4% lower with all data
+    # which is about 4% lower with completed data
     # data = df.drop(
     #    ['Result', 'URL_of_Anchor', 'SFH', 'Abnormal_URL', 'on_mouseover', "age_of_domain", "DNSRecord", "web_traffic",
     #     "Page_Rank", "Google_Index", "Links_pointing_to_page", "Statistical_report"], axis=1)
@@ -37,71 +37,72 @@ def machine():
     clf = RandomForestClassifier().fit(X_train, y_train)
     y_pred = clf.predict(X_test)
 
-    accuracy = clf.score(X_test, y_test)
-    print(f"Accuracy: {accuracy}")
-
-    '''
-    [TN FP]
-    [FN TP]
-    '''
-
-    print("\nConfusion Matrix: ")
-    cm = confusion_matrix(y_test, y_pred)
-
-    plt.figure()  # Create a new figure
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-    plt.xlabel('Predicted label')
-    plt.ylabel('True label')
-    plt.title('Confusion Matrix')
-    plt.savefig('cm.png')
-    print("Plotted Confusion Matrix check cm.png")
-
-    # Plot feature importances
-    feature_importances = clf.feature_importances_
-    fi = plt
-    fi.figure()
-    fi.bar(data.columns, feature_importances)
-    fi.xticks(rotation=90)
-    fi.xlabel('Features')
-    fi.ylabel('Importance')
-    fi.title('Feature Importance')
-    fi.tight_layout()
-    fi.savefig('fi.png')
-    print("Plotted Feature Importance check fi.png")
-
-    # Calculate ROC curve and AUC
-    fpr, tpr, _ = roc_curve(y_test, y_pred)
-    roc_auc = auc(fpr, tpr)
-
-    # Plot ROC curve
-    plt.figure()
-    plt.plot(fpr, tpr, color='blue', lw=2, label='ROC curve (AUC = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='gray', linestyle='--')  # Random classifier line
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('ROC Curve')
-    plt.legend(loc='lower right')
-    plt.savefig('roc.png')
-    print("Plotted ROC curve check roc.png")
-
-    # Plot learning curve
-    train_sizes, train_scores, test_scores = learning_curve(clf, data2, label, cv=5)
-    lc = plt
-    lc.figure()
-    lc.plot(train_sizes, np.mean(train_scores, axis=1), label='Training score')
-    lc.plot(train_sizes, np.mean(test_scores, axis=1), label='Cross-validation score')
-    lc.xlabel('Number of Training Examples')
-    lc.ylabel('Accuracy Score')
-    lc.title('Learning Curve')
-    lc.legend()
-    lc.savefig('lc.png')
-    print("Plotted Learning Curve check lc.png")
+    # accuracy = clf.score(X_test, y_test)
+    # print(f"Accuracy: {accuracy}")
+    #
+    # '''
+    # [TN FP]
+    # [FN TP]
+    # '''
+    #
+    # print("\nConfusion Matrix: ")
+    # cm = confusion_matrix(y_test, y_pred)
+    #
+    # plt.figure()  # Create a new figure
+    # sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    # plt.xlabel('Predicted label')
+    # plt.ylabel('True label')
+    # plt.title('Confusion Matrix')
+    # plt.savefig('cm.png')
+    # print("Plotted Confusion Matrix check cm.png")
+    #
+    # # Plot feature importances
+    # feature_importances = clf.feature_importances_
+    # fi = plt
+    # fi.figure()
+    # fi.bar(data.columns, feature_importances)
+    # fi.xticks(rotation=90)
+    # fi.xlabel('Features')
+    # fi.ylabel('Importance')
+    # fi.title('Feature Importance')
+    # fi.tight_layout()
+    # fi.savefig('fi.png')
+    # print("Plotted Feature Importance check fi.png")
+    #
+    # # Calculate ROC curve and AUC
+    # fpr, tpr, _ = roc_curve(y_test, y_pred)
+    # roc_auc = auc(fpr, tpr)
+    #
+    # # Plot ROC curve
+    # plt.figure()
+    # plt.plot(fpr, tpr, color='blue', lw=2, label='ROC curve (AUC = %0.2f)' % roc_auc)
+    # plt.plot([0, 1], [0, 1], color='gray', linestyle='--')  # Random classifier line
+    # plt.xlabel('False Positive Rate')
+    # plt.ylabel('True Positive Rate')
+    # plt.title('ROC Curve')
+    # plt.legend(loc='lower right')
+    # plt.savefig('roc.png')
+    # print("Plotted ROC curve check roc.png")
+    #
+    # # Plot learning curve
+    # train_sizes, train_scores, test_scores = learning_curve(clf, data2, label, cv=5)
+    # lc = plt
+    # lc.figure()
+    # lc.plot(train_sizes, np.mean(train_scores, axis=1), label='Training score')
+    # lc.plot(train_sizes, np.mean(test_scores, axis=1), label='Cross-validation score')
+    # lc.xlabel('Number of Training Examples')
+    # lc.ylabel('Accuracy Score')
+    # lc.title('Learning Curve')
+    # lc.legend()
+    # lc.savefig('lc.png')
+    # print("Plotted Learning Curve check lc.png")
 
     response = None
     sus_links = []
     legit_links = []
 
-    url = "www.angel-magic"
+    # url = www.angel-magic.com
+    url = input("Enter the URL you want to analyze: ")
 
     # Add default scheme (https://) if missing
     def add_default_scheme(url):
@@ -110,10 +111,10 @@ def machine():
         return url
 
     '''
-    Check URL for IP address and hexadecimal)
+    Check URL for IP address and hexadecimal
     Example:
-    http://123.12.12.321/phising.html will return -1
-    https://0x7f123456/index.html will return -1
+    http://125.98.3.123/fake.html will return -1
+    http://0x58.0xCC.0xCA.0x62/2/paypal.ca/index.html will return -1
     https://www.google.com/index.html will return 1
     '''
 
@@ -170,7 +171,7 @@ def machine():
     '''
     check for URL is shortened
     Example:
-    bit.ly/19DXSk4 will return -1
+    “bit.ly/19DXSk4 will return -1
     '''
 
     # List of shortened domains
@@ -533,19 +534,24 @@ def machine():
     print("Finished analysing ports.\n")
 
     '''
-    To check for 'https' token in URL
+    Check for 'https' token in URL
     If URL starts with https://, return 1
     If URL starts with http://, return -1
     '''
 
-    print("Scanning for https token...")
-    if url.startswith("https:"):
-        HTTPS_token = 1
-        legit_links.append('HTTPS in use.')
-    else:
-        HTTPS_token = -1
-        sus_links.append('HTTPS not used.')
-    print("Finished checking https token.")
+    HTTPS_token = 0  # Initialize HTTPS_token with a default value
+    url = add_default_scheme(url)
+    print(f"Scanning for https token.")
+    try:
+        response = requests.get(url, timeout=10)
+        if response.url.startswith("https"):
+            legit_links.append(f'HTTPS in use.')
+        else:
+            sus_links.append(f'HTTPS not used.')
+    except requests.exceptions.RequestException as e:
+        sus_links.append(f'{url} - Failed to connect or HTTPS not used. Error: {str(e)}')
+
+    print("Finished checking https token.\n")
 
     '''
     check favicon for URL
@@ -591,7 +597,7 @@ def machine():
         else:
             Favicon = 0
             sus_links.append('Favicon not found.')
-            print(Favicon)
+            # print(Favicon)
 
     except requests.exceptions.RequestException as e:
         Favicon = 0
@@ -650,7 +656,7 @@ def machine():
         print("Finished analysing tags.\n")
 
     '''
-    # # Checking submitting information to email
+    # # Checking if submitting information to email
     # # if mail() or mailto: function detected return -1
     # # else 1
     '''
@@ -689,7 +695,7 @@ def machine():
 
     url = add_default_scheme(url)
 
-    print("Looking at number of redirects...")
+    print("Scanning  for number of redirects...")
     for _ in range(max_redirects):
         try:
             response = requests.get(url)
@@ -779,7 +785,7 @@ def machine():
     print("Finished scanning for pop-up events.\n")
 
     '''
-    Check whether iframe tag is used to create an invisible frame
+    Check if iframe tag is used to create an invisible frame
     If iframe is used, return -1
     Else, return 1
     User might keep malicious invisible frame.
@@ -834,18 +840,20 @@ def machine():
     }
 
     urlData = pd.DataFrame(data_dict)
+
     print("\nSafe Attribute:")
     for link in legit_links:
         print(link)
+
     print("\nSuspicious Attribute:")
     for link in sus_links:
         print(link)
+
 
     prediction = clf.predict(urlData)
     if prediction[0] == 1:
         print(f"\nThe website {url} is " + "Safe.\n")
     else:
         print(f"\nThe website {url} is " + "Suspicious.\n")
-
 
 machine()
