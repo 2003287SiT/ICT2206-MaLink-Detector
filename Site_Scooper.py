@@ -219,10 +219,10 @@ if __name__ == "__main__":
                 subheader(art6)
                 print_url_safety(site)
 
-                # Option 7 Scooper ML
-                subheader(art7)
-                print_url_safety(site)
-                optionfooter()
+                # # Option 7 Scooper ML
+                # subheader(art7)
+                # print_url_safety(site)
+                # optionfooter()
 
             elif choice == "9":
                 optionheader(art9)
