@@ -40,8 +40,6 @@ def generate_html(inserted_domain):
 
     dns_records = get_dns_records(domain)
 
-    ml_data = machine(domain)
-
     # Load the HTML template
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template('template_report.html')
@@ -59,7 +57,6 @@ def generate_html(inserted_domain):
         longitude=longitude,
         safe_browsing=safe_browsing,
         dns_records=dns_records,
-        ml_data=ml_data
     )
 
     # Save the report to a file
